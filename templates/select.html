@@ -1,0 +1,29 @@
+{% extends "header.html" %}
+
+{% block title %}
+Select
+{% endblock %}
+
+{% block content %}
+<table>
+  <thead>
+    <th></th>
+    <th>ID</th>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </thead>
+  {% for row in rows %}
+  <tr>
+    <td>
+      <input type="checkbox">
+    </td>
+    <td>{{ row.id }}</td>
+    <td>{{ row.company }}</td>
+    <td>{{ row.contact }}</td>
+    <td>{{ row.country }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock%}

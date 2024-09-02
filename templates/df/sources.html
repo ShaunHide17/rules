@@ -1,0 +1,120 @@
+{% extends "header.html" %}
+
+{% block title %}
+Data Sources
+{% endblock %}
+
+{% block content %}
+
+<div class="flex mx-auto w-max bg-white">
+  <table id="myTable" class="">
+    <!-- head -->
+    <thead class="">
+        <th>id</th>
+        <th>Name</th>
+        <th>Table</th>
+        <th>Database</th>
+        <th>IP</th>
+        <th>Port</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr class="hover hover:bg-gray-300">
+          <th>{{row.id}}</th>
+          <td>{{row.name}}</td>
+          <td>{{row.table_name}}</td>
+          <td>{{row.database}}</td>
+          <td>{{row.host_ip}}</td>
+          <td>{{row.port}}</td>
+          <td>{{row.username}}</td>
+          <td>{{row.password}}</td>
+          <td>
+            <button 
+              class="w-20 bg-yellow-400 rounded text-center text-white hover hover:bg-white hover:text-black" 
+              hx-get="/sources/edit/{{row.id}}"
+              hx-target="#source_edit_form_{{row.id}}"
+              hx-swap="innerHTML"
+              onclick="edit_modal_{{row.id}}.showModal()"
+            >
+              Edit
+            </button>
+            <!-- This should be dynamically loaded with an hx-get request -->
+            <dialog id="edit_modal_{{row.id}}" class="modal">
+              <div class="modal-box">
+                <h3 class="text-lg font-bold">Edit "{{ row.name }}"</h3>
+                <div id="source_edit_form_{{row.id}}"> </div>
+              </div>
+            </dialog>
+          </td>
+          <td>
+            <button
+              class="w-20 bg-red-700 rounded text-center text-white hover hover:bg-white hover:text-black" 
+              onclick="delete_modal_{{row.id}}.showModal()">
+              Delete
+            </button>
+            <!-- This should be dynamically loaded with an hx-get request -->
+            <dialog id="delete_modal_{{row.id}}" class="modal">
+              <div class="modal-box">
+                <form method="dialog">
+                  <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 class="text-lg font-bold">Delete "{{row.name}}"</h3>
+                <p class="py-4">Are you sure?</p>
+                <button 
+                  class="w-20 bg-slate-700 rounded text-center text-white"
+                  hx-get="/sources/delete/{{row.id}}"
+                  onclick="delete_modal_{{row.id}}.close()"
+                >
+                  Yes
+                </button>
+                <button
+                  class="w-20 bg-slate-700 rounded text-center text-white"
+                  onclick="delete_modal_{{row.id}}.close()"
+                >
+                  No
+                </button>
+              </div>
+            </dialog>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div
+  class="mx-auto w-20 bg-green-700 rounded text-center text-white hover hover:bg-slate-700"
+  hx-get="/sources/add"
+  hx-target="#source_add_form"
+  hx-swap="innerHTML"
+  onclick="add_modal.showModal()"
+>
+  Add
+</div>
+<dialog id="add_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Add Data Source</h3>
+    <div id="source_add_form"> </div>
+  </div>
+</dialog>
+
+<script>
+  let table = new DataTable('#myTable', {
+    searching: true,
+    ordering: true,
+    paging: false,
+    info: false,
+    columnDefs: [
+    {
+        target: [0,6,7],
+        visible: false,
+        searchable: false
+    },
+    ]
+  });
+</script>
+{% endblock%}

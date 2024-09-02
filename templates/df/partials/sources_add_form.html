@@ -1,0 +1,43 @@
+<form method="POST" hx-post="/sources/add">
+  <div>
+    <label for="name"> Name </label>
+    <input type="text" name="name" class="w-60 border border-gray-300 rounded p-2" placeholder="Name">
+  </div>
+  <div>
+    <label for="table_name"> Table </label>
+    <input type="text" name="table_name" class="w-60 border border-gray-300 rounded p-2" placeholder="Table Name">
+  </div>
+  <div>
+    <label for="database"> Database </label>
+    <input type="text" name="database" class="w-60 border border-gray-300 rounded p-2" placeholder="Database">
+  </div>
+  <div>
+    <label for="host_ip"> IP </label>
+    <input type="text" name="host_ip" class="w-60 border border-gray-300 rounded p-2" placeholder="Host IP">
+  </div>
+  <div>
+    <label for="port"> Port </label>
+    <input type="text" name="port" class="w-60 border border-gray-300 rounded p-2" placeholder="Port">
+  </div>
+  <div>
+    <label for="username"> Username </label>
+    <input type="text" name="username" class="w-60 border border-gray-300 rounded p-2" placeholder="Username">
+  </div>
+  <div>
+    <label for="password"> Password </label>
+    <input type="text" name="password" class="w-60 border border-gray-300 rounded p-2" placeholder="Password">
+  </div>
+  <button 
+    type="submit"
+    class="w-20 bg-slate-700 rounded text-center text-white"
+    onclick="add_modal.close()"
+  >
+    Save
+  </button>
+  <button
+    class="w-20 bg-slate-700 rounded text-center text-white"
+    onclick="add_modal.close()"
+  >
+    Cancel
+  </button>              
+</form>

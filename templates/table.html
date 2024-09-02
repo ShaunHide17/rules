@@ -1,0 +1,29 @@
+{% extends "header.html" %}
+
+{% block title %}
+Table
+{% endblock %}
+
+{% block content %}
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr id="table"></tr>
+</table>
+<button hx-get="/table-load-items" hx-target="#table" hx-swap="outerHTML" class="bg-blue-500 text-white px-4 py-2 rounded">Load Items</button>
+
+{% endblock%}

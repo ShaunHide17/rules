@@ -1,0 +1,44 @@
+<div id="tabs" class="container mx-auto">
+
+  <div role="tablist" class="tabs tabs-lifted tabs-lg">
+    <a role="tab"
+      {% if tab == "1" %}
+        class="tab tab-active text-white [--tab-bg:black]"
+      {% else %}
+        class="tab text-black"
+      {% endif %}
+       hx-get="/tabs?tab=1"
+       hx-target='#tabs'
+       hx-swap="outerHTML"
+    >
+      Tab 1
+    </a>
+    <a role="tab"
+      {% if tab == "2" %}
+        class="tab tab-active text-white [--tab-bg:black]"
+      {% else %}
+        class="tab text-black"
+      {% endif %}
+       hx-get="/tabs?tab=2"
+       hx-target='#tabs'
+       hx-swap="outerHTML"
+    >
+      Tab 2
+    </a>
+    <a role="tab"
+      {% if tab == "3" %}
+        class="tab tab-active text-white [--tab-bg:black]"
+      {% else %}
+        class="tab text-black"
+      {% endif %}
+       hx-get="/tabs?tab=3"
+       hx-target='#tabs'
+       hx-swap="outerHTML"
+    >
+      Tab 3
+    </a>
+  </div>
+  <div>
+    {% include "partials/tab_tables.html" %}
+  </div>
+</div>

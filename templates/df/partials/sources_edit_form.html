@@ -1,0 +1,43 @@
+<form method="POST" hx-post="/sources/edit/{{row.id}}">
+  <div>
+    <label for="name"> Name </label>
+    <input type="text" name="name" class="w-60 border border-gray-300 rounded p-2" placeholder="Name" value="{{ row.name }}">
+  </div>
+  <div>
+    <label for="table_name"> Table </label>
+    <input type="text" name="table_name" class="w-60 border border-gray-300 rounded p-2" placeholder="Table Name" value="{{ row.table_name }}">
+  </div>
+  <div>
+    <label for="database"> Database </label>
+    <input type="text" name="database" class="w-60 border border-gray-300 rounded p-2" placeholder="Database" value="{{ row.database }}">
+  </div>
+  <div>
+    <label for="host_ip"> IP </label>
+    <input type="text" name="host_ip" class="w-60 border border-gray-300 rounded p-2" placeholder="Host IP" value="{{ row.host_ip }}">
+  </div>
+  <div>
+    <label for="port"> Port </label>
+    <input type="text" name="port" class="w-60 border border-gray-300 rounded p-2" placeholder="Port" value="{{ row.port }}">
+  </div>
+  <div>
+    <label for="username"> Username </label>
+    <input type="text" name="username" class="w-60 border border-gray-300 rounded p-2" placeholder="Username" value="{{ row.username }}">
+  </div>
+  <div>
+    <label for="password"> Password </label>
+    <input type="text" name="password" class="w-60 border border-gray-300 rounded p-2" placeholder="Password" value="{{ row.password }}">
+  </div>
+  <button 
+    type="submit"
+    class="w-20 bg-slate-700 rounded text-center text-white"
+    onclick="edit_modal_{{row.id}}.close()"
+  >
+    Save
+  </button>
+  <button
+    class="w-20 bg-slate-700 rounded text-center text-white"
+    onclick="edit_modal_{{row.id}}.close()"
+  >
+    Cancel
+  </button>              
+</form>

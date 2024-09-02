@@ -1,0 +1,6 @@
+*.pyc
+.venv/*
+environment.txt
+GOOGLE_CREDENTIALS.json
+environment.sh
+.streamlit/secrets.toml

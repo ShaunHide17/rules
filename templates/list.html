@@ -1,0 +1,14 @@
+{% extends "header.html" %}
+
+{% block title %}
+List
+{% endblock %}
+
+{% block content %}
+
+<button hx-get="/list-load-items" hx-target="#list" hx-swap="innerHTML" class="bg-blue-500 text-white px-4 py-2 rounded">Load Items</button>
+<div id="list" class="mt-4 bg-blue-300">
+    <!-- Items will be loaded here -->
+</div>
+
+{% endblock%}
